@@ -1,0 +1,23 @@
+*.class
+
+# Configuration
+.idea
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Compile output
+out
+
+# Spider created
+*.zip
+CWOJ
+BZOJ
+Vijos
+CodeVS
+HOJ
+HduOJ
+FOJ
+POJ
