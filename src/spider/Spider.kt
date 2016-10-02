@@ -32,9 +32,10 @@ class MyWindow() : Frame("OJ-Spider by ice1000"), Echoer {
 		isVisible = true
 	}
 
-	private fun TextArea.build() : TextArea {
+	private fun TextArea.build(): TextArea {
 		background = Color(0x2b2b2b)
 		foreground = Color(0xa9b7c6)
+		isEditable = false
 		return this
 	}
 
@@ -47,13 +48,16 @@ class MyWindow() : Frame("OJ-Spider by ice1000"), Echoer {
 fun main(args: Array<String>) {
 	val window = MyWindow()
 	OJ.echoer = window
-	CodeVS.go()
-	Vijos.go()
-	POJ.go()
-	BZOJ.go()
-	CWOJ.go()
-	HduOJ.go()
-	HOJ.go()
-	FOJ.go()
+	listOf(
+			CodeVS,
+			Vijos,
+			POJ,
+			BZOJ,
+			CWOJ,
+			HduOJ,
+			HOJ,
+			FOJ).forEach { oj ->
+		oj.go()
+	}
 }
 
