@@ -3,16 +3,16 @@ package oj
 import spider.Echoer
 import java.io.File
 import java.net.URL
+import kotlin.concurrent.thread
 
 /**
  * Created by ice1000 on 2016/10/2.
  *
  * @author ice1000
  */
-
 abstract class OJ() {
 	abstract fun go()
-	protected fun checkFile(string: String) {
+	private fun checkFile(string: String) {
 		File(string).run {
 			if (!exists()) mkdir()
 		}
@@ -30,6 +30,12 @@ abstract class OJ() {
 		}
 	}
 
+	protected fun multiThreadGo(all: Int, name: String, url: String) {
+		for (idx in 0..all) thread {
+			write100(idx, name, url)
+		}
+	}
+
 	private fun println(string: String) {
 		echoer?.echo(string)
 	}
@@ -41,65 +47,49 @@ abstract class OJ() {
 
 object CodeVS : OJ() {
 	override fun go() {
-		for (idx in 0..27) Thread({
-			write100(idx, "CodeVS", "http://codevs.cn/problem/")
-		}).start()
+		multiThreadGo(27, "CodeVS", "http://codevs.cn/problem/")
 	}
 }
 
 object Vijos : OJ() {
 	override fun go() {
-		for (idx in 0..9) Thread({
-			write100(idx, "Vijos", "https://vijos.org/p/")
-		}).start()
+		multiThreadGo(9, "Vijos", "https://vijos.org/p/")
 	}
 }
 
 object POJ : OJ() {
 	override fun go() {
-		for (idx in 0..31) Thread({
-			write100(idx, "POJ", "http://poj.org/problem?&lang=zh-CN&change=true&id=")
-		}).start()
+		multiThreadGo(31, "POJ", "http://poj.org/problem?&lang=zh-CN&change=true&id=")
 	}
 }
 
 object BZOJ : OJ() {
 	override fun go() {
-		for (idx in 0..38) Thread({
-			write100(idx, "BZOJ", "http://www.lydsy.com/JudgeOnline/problem.php?id=")
-		}).start()
+		multiThreadGo(38, "BZOJ", "http://www.lydsy.com/JudgeOnline/problem.php?id=")
 	}
 }
 
 object CWOJ : OJ() {
 	override fun go() {
-		for (idx in 0..4) Thread({
-			write100(idx, "CWOJ", "https://cwoj.org/problempage.php?problem_id=")
-		}).start()
+		multiThreadGo(4, "CWOJ", "https://cwoj.org/problempage.php?problem_id=")
 	}
 }
 
 object HduOJ : OJ() {
 	override fun go() {
-		for (idx in 0..50) Thread({
-			write100(idx, "HduOJ", "http://acm.hdu.edu.cn/showproblem.php?pid=")
-		}).start()
+		multiThreadGo(50, "HduOJ", "http://acm.hdu.edu.cn/showproblem.php?pid=")
 	}
 }
 
 object HOJ : OJ() {
 	override fun go() {
-		for (idx in 0..23) Thread({
-			write100(idx, "HOJ", "http://acm.hit.edu.cn/hoj/problem/view?id=")
-		}).start()
+		multiThreadGo(23, "HOJ", "http://acm.hit.edu.cn/hoj/problem/view?id=")
 	}
 }
 
 object FOJ : OJ() {
 	override fun go() {
-		for (idx in 0..13) Thread({
-			write100(idx, "FOJ", "http://acm.fzu.edu.cn/problem.php?pid=")
-		}).start()
+		multiThreadGo(13, "FOJ", "http://acm.fzu.edu.cn/problem.php?pid=")
 	}
 }
 
