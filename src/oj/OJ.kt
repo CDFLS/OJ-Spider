@@ -93,6 +93,12 @@ object FOJ : OJ() {
 	}
 }
 
+object LuoGu : OJ() {
+	override fun go() {
+		multiThreadGo(25, "LuoGu", "http://www.luogu.org/problem/show?pid=")
+	}
+}
+
 
 
 
