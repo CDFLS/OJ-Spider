@@ -20,7 +20,7 @@ abstract class OJ() {
 
 	protected fun write100(begin: Int, name: String, url: String) {
 		checkFile(name)
-		((begin * 100)..(begin * 100 + 99)).forEach { i ->
+		((begin * 20)..(begin * 20 + 19)).forEach { i ->
 			try {
 				File("$name${File.separator}$name-${(1000 + i)}.html")
 						.writeText(URL("$url${1000 + i}").readText())
@@ -31,7 +31,7 @@ abstract class OJ() {
 	}
 
 	protected fun multiThreadGo(all: Int, name: String, url: String) {
-		for (idx in 0..all) thread {
+		for (idx in 0..(all * 5)) thread {
 			write100(idx, name, url)
 		}
 	}
