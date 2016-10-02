@@ -1,5 +1,6 @@
 package oj
 
+import spider.Echoer
 import java.io.File
 import java.net.URL
 
@@ -9,7 +10,7 @@ import java.net.URL
  * @author ice1000
  */
 
-abstract class OJ {
+abstract class OJ() {
 	abstract fun go()
 	protected fun checkFile(string: String) {
 		File(string).run {
@@ -27,6 +28,14 @@ abstract class OJ {
 			}
 			println("$name has downloaded: ${1000 + i}")
 		}
+	}
+
+	private fun println(string: String) {
+		echoer?.echo(string)
+	}
+
+	companion object {
+		var echoer: Echoer? = null
 	}
 }
 
